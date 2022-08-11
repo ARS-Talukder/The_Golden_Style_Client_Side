@@ -41,7 +41,8 @@ const Header = () => {
             </div>
 
             {/* ----------------------This is for Large Screen---------------------- */}
-            <div className="navbar-start hidden lg:flex md:flex w-3/4 mx-auto">
+            <div className="navbar-start hidden lg:flex md:flex w-full">
+                <div className='mx-auto'>
                 <ul className="menu menu-horizontal p-0 my-0">
                     {menuItems1}
                     <a className="normal-case">
@@ -50,6 +51,7 @@ const Header = () => {
                     {menuItems2}
 
                 </ul>
+                </div>
             </div>
         </div>
     );
