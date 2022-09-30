@@ -5,7 +5,7 @@ import { BsTelephoneFill } from "react-icons/bs";
 
 const BannerContact = () => {
     return (
-        <div className='w-4/5 mb-4'>
+        <div className='lg:w-4/5 md:w-full mb-4'>
             <Slide left>
                 <div className='w-full flex justify-between px-12 py-3 rounded-lg' style={{ "backgroundColor": "#0000007a" }}>
                     <div className='flex items-center'>

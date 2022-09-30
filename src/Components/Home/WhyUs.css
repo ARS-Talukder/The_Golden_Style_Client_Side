@@ -1,0 +1,47 @@
+.why-main-div {
+    background-image: url("https://i.ibb.co/QKQZNVX/background-image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.why-transparent-div {
+    border-radius: 20px;
+    padding: 35px;
+    height: 250px;
+    color: rgb(233, 62, 5);
+    background: rgba(121, 121, 121, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15px);
+}
+
+.why-transparent-div-header {
+    font-family: papyrus;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: left;
+}
+
+.why-transparent-div-body {
+    font-weight: bold;
+    font-family: papyrus;
+    font-size: x-large;
+    text-align: left;
+}
+
+@media only screen and (max-width: 640px) {
+    .why-transparent-div {
+        height: auto;
+        padding-left: 25px;
+    }
+
+}
+
+@media only screen and (min-width:641px) and (max-width:1023px) {
+    .why-transparent-div {
+        height: auto;
+        padding-left: 40px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+}

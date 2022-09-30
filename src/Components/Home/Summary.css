@@ -1,0 +1,16 @@
+.summary-main-section{
+    background-image: url("https://i.ibb.co/QKQZNVX/background-image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 30px;
+    padding-top: 90px;
+    padding-bottom: 80px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.summary-counter-div{
+    border: 2px solid #2c1991;
+    padding: 30px;
+}

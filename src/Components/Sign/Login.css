@@ -1,0 +1,36 @@
+.signing-container {
+    background-image: url("https://i.ibb.co/QKQZNVX/background-image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.signing-transparent {
+    padding: 35px;
+    color: rgb(206, 72, 27);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+}
+.signing-input{
+    background: transparent;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid white;
+    padding: 10px;
+    color: rgb(204, 190, 190);
+}
+.signing-input::placeholder{
+    color: rgb(202, 103, 10);
+    font-weight: bold;
+}
+.submit-button{
+    border: 2px solid rgb(206, 72, 27);
+    font-weight: bold;
+    color: rgb(206, 72, 27);
+
+}
+.submit-button:hover{
+    border: 3px solid rgb(206, 72, 27);
+    font-size: 1.1em;
+}

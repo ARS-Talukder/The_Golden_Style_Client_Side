@@ -1,0 +1,69 @@
+[
+    {
+      "service_name": "Hair Trimming",
+      "service_img":"https://i.ibb.co/929sBbt/Hair-Cutting.jpg",
+      "service_amount":"18",
+      "barbers_name":[
+        "John Harick",
+        "Michael Morkes",
+        "Ema Leone",
+        "Chris Evan"
+      ]
+    },
+    {
+      "service_name": "Shaving",
+      "service_img":"https://i.ibb.co/8jjM7pF/Shaving.jpg",
+      "service_amount":"20",
+      "barbers_name":[
+        "John Harick",
+        "Michael Morkes",
+        "Ema Leone",
+        "Chris Evan"
+      ]
+    },
+    {
+      "service_name": "Beard Trimming",
+      "service_img":"https://i.ibb.co/s3Rvqwm/Beard-Cutting.jpg",
+      "service_amount":"26",
+      "barbers_name":[
+        "John Harick",
+        "Michael Morkes",
+        "Ema Leone",
+        "Chris Evan"
+      ]
+    },
+    {
+      "service_name": "Facial",
+      "service_img":"https://i.ibb.co/L5W6qPx/Facial.jpg",
+      "service_amount":"30",
+      "barbers_name":[
+        "John Harick",
+        "Michael Morkes",
+        "Ema Leone",
+        "Chris Evan"
+      ]
+    },
+    {
+      "service_name": "Hair Straighten",
+      "service_img":"https://i.ibb.co/7k7C5Qz/Hair-Straighten.jpg",
+      "service_amount":"12",
+      "barbers_name":[
+        "John Harick",
+        "Michael Morkes",
+        "Ema Leone",
+        "Chris Evan"
+      ]
+    },
+    {
+      "service_name": "Oil Massage",
+      "service_img":"https://i.ibb.co/kcpDdqK/Oil-Massage.jpg",
+      "service_amount":"50",
+      "barbers_name":[
+        "John Harick",
+        "Michael Morkes",
+        "Ema Leone",
+        "Chris Evan"
+      ]
+    }
+    
+  ]

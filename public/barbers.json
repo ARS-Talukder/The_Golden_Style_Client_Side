@@ -1,0 +1,62 @@
+[
+    {
+        "barber_name": "John Harick",
+        "barber_img": "https://i.ibb.co/SV257KT/barber-1.jpg",
+        "barber_email": "johnharick@gmail.com",
+        "barber_WhatsApp":"+880 1629-396785",
+        "barber_description":"I am John Harick. I have been working for 4 years. I am so many friendly. I can ensure you that You will have a great experience with me. Thank You.",
+        "slots": [
+            "11.00 AM - 1.00 PM",
+            "1.00 PM - 3.00 PM",
+            "3.00 PM - 5.00 PM",
+            "5.00 PM - 7.00 PM",
+            "7.00 PM - 9.00 PM",
+            "9.00 PM - 11.00 PM"
+        ]
+    },
+    {
+        "barber_name": "Michael Morkes",
+        "barber_img": "https://i.ibb.co/QmF7t5F/barber-2.jpg",
+        "barber_email": "michaelmorkes@gmail.com",
+        "barber_WhatsApp":"+880 1521-517664",
+        "barber_description":"Hii. My name is John Harick. I have been working for 6 years in this sector. I have worked with many high profile people. They love my work. I think You will love me too. Thank You.",
+        "slots": [
+            "11.00 AM - 1.00 PM",
+            "1.00 PM - 3.00 PM",
+            "3.00 PM - 5.00 PM",
+            "5.00 PM - 7.00 PM",
+            "7.00 PM - 9.00 PM",
+            "9.00 PM - 11.00 PM"
+        ]
+    },
+    {
+        "barber_name": "Ema Leone",
+        "barber_img": "https://i.ibb.co/p3LKmcR/barber-3.jpg",
+        "barber_email": "emaleone@gmail.com",
+        "barber_WhatsApp":"+880 1680-549913",
+        "barber_description":"Hello. My name is Ema Leone. I have been working for 3 years in this sector. I have worked with many high profile people. I can ensure to enlarge your smartness for any type of Girls. I think You'll love my work. Thank You.",
+        "slots": [
+            "11.00 AM - 1.00 PM",
+            "1.00 PM - 3.00 PM",
+            "3.00 PM - 5.00 PM",
+            "5.00 PM - 7.00 PM",
+            "7.00 PM - 9.00 PM",
+            "9.00 PM - 11.00 PM"
+        ]
+    },
+    {
+        "barber_name": "Chris Evan",
+        "barber_img": "https://i.ibb.co/tQvtRf0/barber-4.jpg",
+        "barber_email": "chrisevan@gmail.com",
+        "barber_WhatsApp":"+880 1750-080690",
+        "barber_description":"Hii. My name is John Harick. I have been working for 6 years in this sector. I have worked with many high profile people. They love my work. I think You will love me too. Thank You.",
+        "slots": [
+            "11.00 AM - 1.00 PM",
+            "1.00 PM - 3.00 PM",
+            "3.00 PM - 5.00 PM",
+            "5.00 PM - 7.00 PM",
+            "7.00 PM - 9.00 PM",
+            "9.00 PM - 11.00 PM"
+        ]
+    }
+]

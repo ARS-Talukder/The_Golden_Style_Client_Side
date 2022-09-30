@@ -1,15 +1,26 @@
 import React from 'react';
+import ContactSection from '../Shared/ContactSection';
+import Footer from '../Shared/Footer';
 import Banner from './Banner';
-import Header from './Header';
+import Stylist from './Stylist';
+import Summary from './Summary';
+import Testimonial from './Testimonial';
+import WhyUs from './WhyUs';
 
 const Home = () => {
     return (
         <div>
-            <Header></Header>
             <Banner></Banner>
+            <WhyUs></WhyUs>
+            <Stylist></Stylist>
+            <Testimonial></Testimonial>
+            <Summary></Summary>
             
-            
-        </div>
+            <ContactSection></ContactSection>
+            <Footer></Footer>
+
+
+        </div >
     );
 };
 

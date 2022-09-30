@@ -1,0 +1,32 @@
+[
+    {
+      "clientName": "Adnan Shahriar",
+      "email":"adnanshahriar12@gmail.com",
+      "our_environment":"Good",
+      "barber_name":"Chris Evan",
+      "barber_behavior":"Good",
+      "barber_service":"Average",
+      "client_review":"I love The Golden Style Salon!! Not only is their work absolutely flawless and stunning, but their uplifting personalities and customer service are truly one of a kind!"
+    },
+    {
+      "clientName": "Raiyan Hossain",
+      "email":"raiyanhossain324@gmail.com",
+      "our_environment":"Average",
+      "barber_name":"John Harick",
+      "barber_behavior":"Bad",
+      "barber_service":"Average",
+      "client_review":"I'm very pleased with this salon. They provide great customer service. When they give you an appointment they make sure they are ready when you arrive."
+    },
+    {
+      "clientName": "Morshedul Amin",
+      "email":"morshedulamin4252@gmail.com",
+      "our_environment":"Good",
+      "barber_name":"Ema Leone",
+      "barber_behavior":"Good",
+      "barber_service":"Good",
+      "client_review":"I just wanted to thank The Golden Style team for doing such a great job on my engagement day. Thank you for making my day extra special with your magic hands."
+    }
+    
+    
+    
+  ]
