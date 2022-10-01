@@ -35,7 +35,7 @@ const Dashboard = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="dashboard-side-drawer" className="drawer-overlay"></label>
-                    <ul className="menu py-4 px-2 overflow-y-auto w-full h-full bg-stone-800">
+                    <ul className="menu py-4 px-2 overflow-y-auto w-1/2 lg:w-full md:w-1/3 h-full bg-stone-800">
                         {/* <!--------- Sidebar content here -----------> */}
                         <li><Link to='/dashboard' className='btn btn-success mb-3'>My Profile</Link></li>
                         <li><Link to='/dashboard/myhistory' className='btn btn-success mb-3'>My History</Link></li>

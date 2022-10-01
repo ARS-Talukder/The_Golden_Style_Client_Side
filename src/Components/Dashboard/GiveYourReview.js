@@ -6,6 +6,7 @@ import Loading from '../Shared/Loading';
 import '../Home/WhyUs.css';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import DashboardButton from './DashboardButton';
 
 const GiveYourReview = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -59,57 +60,62 @@ const GiveYourReview = () => {
         }
     }
     return (
-        <div className='why-main-div flex justify-center py-4'>
-            <div className='w-1/2 py-8 bg-gray-700 rounded-3xl'>
-                <h3 className='text-center text-success underline font-bold'>How Can We Improve Ourselves?</h3>
-                <form name='review-form' onSubmit={handleReview} action="" className='grid grid-cols-1 gap-4 justify-items-center my-8 px-5'>
+        <div className='why-main-div'>
+            {/* ---------------Dashboard Button------------- */}
+            <DashboardButton></DashboardButton>
 
-                    <input type="text" value={user.displayName} className="input input-bordered input-success w-full " disabled />
+            <div className='flex justify-center  px-3'>
+                <div className=' w-full lg:w-1/2 md:w-1/2  py-8 bg-gray-700 rounded-3xl'>
+                    <h3 className='text-center text-success underline font-bold'>How Can We Improve Ourselves?</h3>
+                    <form name='review-form' onSubmit={handleReview} action="" className='grid grid-cols-1 gap-4 justify-items-center my-8 px-5'>
 
-                    <input type="text" value={user.email} className="input input-bordered input-success w-full" disabled />
+                        <input type="text" value={user.displayName} className="input input-bordered input-success w-full " disabled />
 
-                    <select defaultValue={'Default'} name='our_environment' className="select select-success w-full">
-                        <option value="Default" disabled>Our Environment</option>
-                        <option value="Bad">Bad</option>
-                        <option value="Average">Average</option>
-                        <option value="Good">Good</option>
+                        <input type="text" value={user.email} className="input input-bordered input-success w-full" disabled />
 
-
-                    </select>
-
-                    <select defaultValue={'Default'} name='barber_name' className="select select-success w-full">
-                        <option value="Default" disabled>Barber Name</option>
-                        {
-                            barbers?.map(barber => <option key={barber._id} value={barber.barber_name}>{barber.barber_name}</option>)
-                        }
+                        <select defaultValue={'Default'} name='our_environment' className="select select-success w-full">
+                            <option value="Default" disabled>Our Environment</option>
+                            <option value="Bad">Bad</option>
+                            <option value="Average">Average</option>
+                            <option value="Good">Good</option>
 
 
-                    </select>
+                        </select>
 
-                    <select defaultValue={'Default'} name='barber_behavior' className="select select-success w-full">
-                        <option value="Default" disabled>Barber Behavior</option>
-                        <option value="Bad">Bad</option>
-                        <option value="Average">Average</option>
-                        <option value="Good">Good</option>
-
-
-                    </select>
-
-                    <select defaultValue={'Default'} name='barber_service' className="select select-success w-full">
-                        <option value="Default" disabled>Barber Service</option>
-                        <option value="Bad">Bad</option>
-                        <option value="Average">Average</option>
-                        <option value="Good">Good</option>
+                        <select defaultValue={'Default'} name='barber_name' className="select select-success w-full">
+                            <option value="Default" disabled>Barber Name</option>
+                            {
+                                barbers?.map(barber => <option key={barber._id} value={barber.barber_name}>{barber.barber_name}</option>)
+                            }
 
 
-                    </select>
+                        </select>
 
-                    <textarea name='client_review' className="textarea textarea-success w-full" placeholder="Please Share Your Experience" required></textarea>
+                        <select defaultValue={'Default'} name='barber_behavior' className="select select-success w-full">
+                            <option value="Default" disabled>Barber Behavior</option>
+                            <option value="Bad">Bad</option>
+                            <option value="Average">Average</option>
+                            <option value="Good">Good</option>
 
-                    <input type="submit" value="CONFIRM" className='btn btn-success w-full bg-red-300 text-xl' />
+
+                        </select>
+
+                        <select defaultValue={'Default'} name='barber_service' className="select select-success w-full">
+                            <option value="Default" disabled>Barber Service</option>
+                            <option value="Bad">Bad</option>
+                            <option value="Average">Average</option>
+                            <option value="Good">Good</option>
 
 
-                </form>
+                        </select>
+
+                        <textarea name='client_review' className="textarea textarea-success w-full" placeholder="Please Share Your Experience" required></textarea>
+
+                        <input type="submit" value="CONFIRM" className='btn btn-success w-full bg-red-300 text-xl' />
+
+
+                    </form>
+                </div>
             </div>
         </div>
     );

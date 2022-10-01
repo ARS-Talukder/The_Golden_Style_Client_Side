@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
+import DashboardButton from './DashboardButton';
 
 const AllReviews = () => {
     const { data: reviews, isLoading: reviewsLoading } = useQuery('reviews', () => fetch('http://localhost:5000/reviews').then(res => res.json()));
@@ -11,6 +12,9 @@ const AllReviews = () => {
 
     return (
         <div>
+            {/* ---------------Dashboard Button------------- */}
+            <DashboardButton></DashboardButton>
+
             <div className="overflow-x-auto px-2 my-4">
                 <table className="table w-full">
 

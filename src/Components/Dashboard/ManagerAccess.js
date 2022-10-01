@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
+import DashboardButton from './DashboardButton';
 import ManagerAccessRow from './ManagerAccessRow';
 
 const ManagerAccess = () => {
@@ -29,6 +30,9 @@ const ManagerAccess = () => {
 
     return (
         <div>
+            {/* ---------------Dashboard Button------------- */}
+            <DashboardButton></DashboardButton>
+
             <div className="overflow-x-auto px-2 my-4">
                 <table className="table w-full">
 

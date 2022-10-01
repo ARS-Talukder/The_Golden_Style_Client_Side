@@ -7,29 +7,12 @@ import Footer from '../Shared/Footer';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
 import Barber from './Barber';
-import { signOut } from 'firebase/auth';
-import auth from '../../firebase.init';
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
 import Manager from './Manager';
 
 const About = () => {
-    const navigate = useNavigate();
     const { data: barbers, isLoading: barberLoading } = useQuery('allBarbers', () => fetch('http://localhost:5000/barbers').then(res => res.json()));
 
-    const { data: managers, isLoading: managersLoading } = useQuery('allManagers', () => fetch('http://localhost:5000/managers', {
-        method: 'GET',
-        headers: {
-            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        }
-    }).then(res => {
-        if (res.status === 401 || res.status === 403) {
-            signOut(auth);
-            navigate('/');
-            toast.error("UnAuthorized Access. Please Login again");
-        }
-        return res.json()
-    }));
+    const { data: managers, isLoading: managersLoading } = useQuery('allManagers', () => fetch('http://localhost:5000/managers').then(res => res.json()));
 
     if (barberLoading || managersLoading) {
         return <Loading></Loading>
@@ -44,13 +27,13 @@ const About = () => {
             </BackgroundWithTopic>
 
             {/* -----------------Who We Are---------------------- */}
-            <section className='flex bg-gray-100'>
+            <section className='lg:flex bg-gray-100'>
                 <Slide left>
-                    <div className='w-1/2'>
-                        <img src="https://i.ibb.co/nwbpndP/Barber-1.jpg" alt="Barber" />
+                    <div className='lg:w-1/2'>
+                        <img className='hidden lg:block' src="https://i.ibb.co/nwbpndP/Barber-1.jpg" alt="Barber" />
                     </div>
                 </Slide>
-                <div className='w-1/2 flex justify-center items-center p-4'>
+                <div className='lg:w-1/2 flex justify-center items-center p-4'>
                     <Jello>
                         <div className='w-3/4'>
                             <h3>Who We Are</h3>
@@ -64,8 +47,8 @@ const About = () => {
             </section>
 
             {/* -----------------What We Do---------------------- */}
-            <section className='flex bg-gray-100'>
-                <div className='w-1/2 flex justify-center items-center p-4'>
+            <section className='lg:flex bg-gray-100'>
+                <div className='lg:w-1/2 flex justify-center items-center p-4'>
                     <Jello>
                         <div className='w-3/4'>
                             <h3>What We Do</h3>
@@ -76,7 +59,7 @@ const About = () => {
 
                 </div>
                 <Slide right>
-                    <div className='w-1/2'>
+                    <div className='lg:w-1/2'>
                         <img src="https://i.ibb.co/7KsnjMP/Barber-2.jpg" alt="Barber" />
                     </div>
                 </Slide>
@@ -104,7 +87,7 @@ const About = () => {
                 <div className="divider bg-red-400 w-1/5 h-0.5 mt-0 mx-auto rounded-lg"></div>
 
                 {
-                    managers.map(manager => <Manager key={manager._id} manager={manager}></Manager>)
+                    managers?.map(manager => <Manager key={manager._id} manager={manager}></Manager>)
                 }
 
             </section>

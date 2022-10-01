@@ -3,6 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import DashboardButton from './DashboardButton';
 
 const AddNewManager = () => {
     const navigate = useNavigate();
@@ -56,34 +57,39 @@ const AddNewManager = () => {
 
     }
     return (
-        <div className='why-main-div flex justify-center py-4'>
-            <div className='w-1/2 py-8 bg-gray-700 rounded-3xl'>
-                <h3 className='text-center text-success underline font-bold'>Add New Employee In Your Company</h3>
-                <form name='review-form' onSubmit={handleMakeManager} action="" className='grid grid-cols-1 gap-4 justify-items-center my-8 px-5'>
+        <div className='why-main-div'>
+            {/* ---------------Dashboard Button------------- */}
+            <DashboardButton></DashboardButton>
 
-                    <input type="text" name='name' placeholder='Name' className="input input-bordered input-success w-full " required />
+            <div className='flex justify-center py-4 px-4'>
+                <div className='w-full lg:w-1/2 md:w-1/2 py-8 bg-gray-700 rounded-3xl'>
+                    <h3 className='text-center text-success underline font-bold'>Add New Employee In Your Company</h3>
+                    <form name='review-form' onSubmit={handleMakeManager} action="" className='grid grid-cols-1 gap-4 justify-items-center my-8 px-5'>
 
-                    <input type="email" name='email' placeholder='Email' className="input input-bordered input-success w-full" required />
+                        <input type="text" name='name' placeholder='Name' className="input input-bordered input-success w-full " required />
 
-                    <input type="number" name='mobile' placeholder='Mobile Number' className="input input-bordered input-success w-full" required />
+                        <input type="email" name='email' placeholder='Email' className="input input-bordered input-success w-full" required />
 
-                    <select defaultValue={'Default'} name='position' className="select select-success w-full">
-                        <option value="Default" disabled>Select Position</option>
-                        <option value="manager">Manager</option>
-                        <option value="assistant_manager">Assistant Manager</option>
+                        <input type="number" name='mobile' placeholder='Mobile Number' className="input input-bordered input-success w-full" required />
 
-
-                    </select>
-
-
-                    <input type="text" name='img' placeholder='Image Link' className="input input-bordered input-success w-full my-0" required />
-
-                    <textarea name='message' className="textarea textarea-success w-full" placeholder="Message For the Customer" required></textarea>
-
-                    <input type="submit" value="CONFIRM" className='btn btn-success w-full bg-red-300 text-xl' />
+                        <select defaultValue={'Default'} name='position' className="select select-success w-full">
+                            <option value="Default" disabled>Select Position</option>
+                            <option value="manager">Manager</option>
+                            <option value="assistant_manager">Assistant Manager</option>
 
 
-                </form>
+                        </select>
+
+
+                        <input type="text" name='img' placeholder='Image Link' className="input input-bordered input-success w-full my-0" required />
+
+                        <textarea name='message' className="textarea textarea-success w-full" placeholder="Message For the Customer" required></textarea>
+
+                        <input type="submit" value="CONFIRM" className='btn btn-success w-full bg-red-300 text-xl' />
+
+
+                    </form>
+                </div>
             </div>
         </div>
     );

@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import './Dashboard.css';
+import DashboardButton from './DashboardButton';
 
 const MyCustomersBooking = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -36,6 +37,9 @@ const MyCustomersBooking = () => {
 
     return (
         <div>
+            {/* ---------------Dashboard Button------------- */}
+            <DashboardButton></DashboardButton>
+
             <section>
                 <div className='flex justify-center'>
                     <DayPicker

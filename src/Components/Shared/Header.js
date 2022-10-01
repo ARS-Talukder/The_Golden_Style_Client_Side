@@ -63,9 +63,8 @@ const Header = () => {
 
     return (
         <div className="navbar py-0 navbar-main-div">
-            <div className="navbar-start w-full lg:hidden md:hidden">
-
-                {/* -------------------This is for Small Screen-------------------- */}
+            {/* -------------------This is for Small Screen-------------------- */}
+            <div className="navbar-start lg:hidden md:hidden">
                 <div className="dropdown">
                     <label tabIndex="0" className="btn btn-ghost text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
@@ -76,16 +75,14 @@ const Header = () => {
                         {menuItems2}
 
                     </ul>
-
                 </div>
-                <Link className="btn btn-ghost normal-case text-xl text-white w-3/4" to='/'>
+                <Link className="btn btn-ghost normal-case text-xl text-white w-full ml-12" to='/'>
                     The Golden Style
                 </Link>
-
             </div>
 
             {/* ----------------------This is for Large Screen---------------------- */}
-            <div className="navbar-start hidden lg:flex md:flex w-full">
+            <div className="navbar-center hidden lg:flex md:flex w-full">
                 <div className='mx-auto'>
                     <ul className="menu menu-horizontal p-0 my-0">
                         {menuItems1}
@@ -102,4 +99,4 @@ const Header = () => {
     );
 };
 
-export default Header; <h2>This is Header</h2>
+export default Header;

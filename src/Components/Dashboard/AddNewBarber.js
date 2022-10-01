@@ -3,6 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import DashboardButton from './DashboardButton';
 
 const AddNewBarber = () => {
     const navigate = useNavigate();
@@ -57,25 +58,30 @@ const AddNewBarber = () => {
 
     }
     return (
-        <div className='why-main-div flex justify-center py-4'>
-            <div className='w-1/2 py-8 bg-gray-700 rounded-3xl'>
-                <h3 className='text-center text-success underline font-bold'>Add New Employee In Your Company</h3>
-                <form name='review-form' onSubmit={handleMakeBarber} action="" className='grid grid-cols-1 gap-4 justify-items-center my-8 px-5'>
+        <div className='why-main-div'>
+            {/* ---------------Dashboard Button------------- */}
+            <DashboardButton></DashboardButton>
 
-                    <input type="text" name='name' placeholder='Name' className="input input-bordered input-success w-full " required />
+            <div className='flex justify-center py-4 px-2'>
+                <div className='w-full lg:w-1/2 md:w-4/5 py-8 bg-gray-700 rounded-3xl'>
+                    <h3 className='text-center text-success underline font-bold'>Add New Employee In Your Company</h3>
+                    <form name='review-form' onSubmit={handleMakeBarber} action="" className='grid grid-cols-1 gap-4 justify-items-center my-8 px-5'>
 
-                    <input type="email" name='email' placeholder='Email' className="input input-bordered input-success w-full" required />
+                        <input type="text" name='name' placeholder='Name' className="input input-bordered input-success w-full " required />
 
-                    <input type="number" name='whatsApp' placeholder='whatsApp Number' className="input input-bordered input-success w-full" required />
+                        <input type="email" name='email' placeholder='Email' className="input input-bordered input-success w-full" required />
 
-                    <input type="text" name='img' placeholder='Image Link' className="input input-bordered input-success w-full my-0" required />
+                        <input type="number" name='whatsApp' placeholder='whatsApp Number' className="input input-bordered input-success w-full" required />
 
-                    <textarea name='description' className="textarea textarea-success w-full" placeholder="Barber Description" required></textarea>
+                        <input type="text" name='img' placeholder='Image Link' className="input input-bordered input-success w-full my-0" required />
 
-                    <input type="submit" value="CONFIRM" className='btn btn-success w-full bg-red-300 text-xl' />
+                        <textarea name='description' className="textarea textarea-success w-full" placeholder="Barber Description" required></textarea>
+
+                        <input type="submit" value="CONFIRM" className='btn btn-success w-full bg-red-300 text-xl' />
 
 
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     );

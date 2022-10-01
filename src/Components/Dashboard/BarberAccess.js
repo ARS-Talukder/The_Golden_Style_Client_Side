@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import BarberAccessRow from './BarberAccessRow';
+import DashboardButton from './DashboardButton';
 
 const BarberAccess = () => {
     const navigate = useNavigate();
@@ -30,6 +31,9 @@ const BarberAccess = () => {
 
     return (
         <div>
+            {/* ---------------Dashboard Button------------- */}
+            <DashboardButton></DashboardButton>
+
             <div className="overflow-x-auto px-2 my-4">
                 <table className="table w-full">
 

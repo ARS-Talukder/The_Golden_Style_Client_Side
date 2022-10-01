@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
+import DashboardButton from './DashboardButton';
 
 const MyHistory = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -30,6 +31,9 @@ const MyHistory = () => {
     }
     return (
         <div>
+            {/* ---------------Dashboard Button------------- */}
+            <DashboardButton></DashboardButton>
+
             <div className="overflow-x-auto px-2 my-4">
                 <table className="table w-full">
 

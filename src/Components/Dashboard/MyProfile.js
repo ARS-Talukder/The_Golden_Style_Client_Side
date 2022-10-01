@@ -10,6 +10,7 @@ import { useQuery } from 'react-query';
 import useManager from '../../hooks/useManager';
 import useBarber from '../../hooks/useBarber';
 import useChairman from '../../hooks/useChairman';
+import DashboardButton from './DashboardButton';
 
 
 const MyProfile = () => {
@@ -96,6 +97,9 @@ const MyProfile = () => {
     }
     return (
         <div>
+            {/* ---------------Dashboard Button------------- */}
+            <DashboardButton></DashboardButton>
+
             {/* --------------Picture Section---------------- */}
             <div className='flex justify-center'>
                 <div className="border-2 rounded border-gray-500 p-1 relative">

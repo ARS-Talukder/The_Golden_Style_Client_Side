@@ -42,8 +42,8 @@ const Login = () => {
 
     }
     return (
-        <div className='flex justify-center items-center signing-container py-8'>
-            <div className="lg:w-2/6 sm:w-full signing-transparent">
+        <div className='flex justify-center items-center signing-container py-8 px-4'>
+            <div className="w-full lg:w-2/6 md:w-1/2 signing-transparent">
                 <h2 className="text-center">Welcome!</h2>
                 <p className='text-center text-white font-light'>Today will be great.</p>
                 <div className='flex justify-center'>
