@@ -8,5 +8,15 @@
 .header-link:hover{
     transform: rotate(360deg);
     transition: all 1s ease-in-out;
+    font-weight: bold;
     color: rgb(247, 115, 8);
+}
+
+@media only screen and (max-width: 640px) {
+    .header-link {
+        background-color: rgb(31, 28, 28);
+        margin-bottom: 2px;
+        width: 130px;
+    }
+
 }

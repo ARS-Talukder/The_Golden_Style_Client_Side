@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { useEffect } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -10,6 +11,7 @@ import './Login.css';
 const Login = () => {
     const [signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+    const [showpassword, setShowpassword] = useState(false);
     const [token] = useToken(user || gUser);
 
     const navigate = useNavigate();
@@ -33,6 +35,10 @@ const Login = () => {
         signInError = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
     }
 
+    const handleShowPassword = () => {
+        setShowpassword(value => !value);
+    }
+
     const handleSignIn = event => {
         event.preventDefault();
         const email = event.target.email.value;
@@ -49,20 +55,20 @@ const Login = () => {
                 <div className='flex justify-center'>
                     <form onSubmit={handleSignIn} className='w-4/5 mt-6' action="">
                         {/* ------------Email Field------------- */}
-                        <div>
-                            <input type="email" name="email" placeholder="Enter Your Email" className="w-full max-w-xs signing-input" required />
-                        </div>
+                        <input type="email" name="email" placeholder="Enter Your Email" className="w-full max-w-xs signing-input" required />
+
                         {/* ------------Password Field------------- */}
-                        <div>
-                            <input type="password" name="password" placeholder="Enter Your Password" className="w-full max-w-xs my-8 signing-input" required />
-                        </div>
+                        <input type={showpassword ? "text" : "password"} name="password" placeholder="Enter Your Password" className="w-full max-w-xs mt-8 mb-2 signing-input" required />
 
                         {signInError}
 
-                        {/* ------------Submit Button------------- */}
-                        <div>
-                            <input className='btn w-full max-w-xs mt-2 submit-button' type="submit" value="Login" />
+                        <div className='flex items-center'>
+                            <input type="checkbox" className='w-4 h-4 mx-2' onClick={handleShowPassword} />
+                            <label className='text-gray-200'>Show Password</label>
                         </div>
+
+                        {/* ------------Submit Button------------- */}
+                        <input className='btn w-full max-w-xs mt-4 submit-button' type="submit" value="Login" />
 
                     </form>
                 </div>
@@ -70,6 +76,10 @@ const Login = () => {
                 <div className='w-4/5 mx-auto'>
                     <p className='font-bold text-orange-500 mt-4'>NEW TO THE GOLDEN STYLE??</p>
                     <Link className="font-bold" to="/signup">CLICK TO CREATE NEW ACCOUNT</Link>
+                </div>
+
+                <div className='w-4/5 mx-auto'>
+                    <Link className='text-xl font-bold text-red-700 mt-4' to="/resetpassword">Reset Password</Link>
                 </div>
 
                 {/* -------------OR Divider--------------- */}
@@ -80,9 +90,13 @@ const Login = () => {
 
                 </div>
 
-                <div className='flex justify-center'>
-                    <button onClick={() => signInWithGoogle()} className="btn w-full max-w-xs mt-2 submit-button text-center">CONTINUE WITH GOOGLE</button>
+                <div className='flex justify-center items-center'>
+                    <button onClick={() => signInWithGoogle()} className="flex justify-center items-center w-full max-w-xs mt-2 py-2 rounded submit-button">
+                        <img className='w-6 h-6 mr-2' src="https://i.ibb.co/vcHZKPm/google-logo.png" alt="google_logo" />
+                        <p className='m-0'>CONTINUE WITH GOOGLE</p>
+                    </button>
                 </div>
+                
 
 
 

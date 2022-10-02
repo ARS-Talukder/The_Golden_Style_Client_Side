@@ -11,11 +11,12 @@ const SignUp = () => {
     const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [updateProfile, updating, uError] = useUpdateProfile(auth);
-    const [passwordMatched, setPasswordMatched] = useState('');
-    const [token]  = useToken(user || gUser);
+    const [passwordError, setPasswordError] = useState('');
+    const [showpassword, setShowpassword] = useState(false);
+    const [token] = useToken(user || gUser);
 
     const navigate = useNavigate();
-    
+
 
     if (loading || gLoading || updating) {
         <Loading></Loading>
@@ -30,6 +31,14 @@ const SignUp = () => {
         navigate('/');
     }
 
+    const handlePasswordFocus = () => {
+        setPasswordError('')
+    }
+
+    const handleShowPassword = () => {
+        setShowpassword(value => !value);
+    }
+
     const handleSignUp = async event => {
         event.preventDefault();
 
@@ -37,15 +46,20 @@ const SignUp = () => {
         const email = event.target.email.value;
         const password = event.target.password.value;
         const confirmPassword = event.target.confirm.value;
+        const passwordExpression = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,20}$/;
 
-        if (password === confirmPassword) {
-            await createUserWithEmailAndPassword(email, password);
-            await updateProfile({ displayName: name });
-            // navigate('/')
+        if (!passwordExpression.test(password)) {
+            setPasswordError('Password at least 7 characters, one upper and lower case letter and one digit')
+        }
+
+        else if (password !== confirmPassword) {
+            setPasswordError('Sorry!! Password and Confirm Password did not match')
 
         }
         else {
-            setPasswordMatched('Sorry!! Password did not match')
+            await createUserWithEmailAndPassword(email, password);
+            await updateProfile({ displayName: name });
+            // navigate('/')
         }
 
     }
@@ -57,28 +71,29 @@ const SignUp = () => {
                 <div className='flex justify-center'>
                     <form onSubmit={handleSignUp} className='w-4/5 mt-3' action="">
                         {/* ------------Name Field------------- */}
-                        <div>
-                            <input type="text" name="name" placeholder="Your Name" className="w-full max-w-xs my-3 signing-input" required />
-                        </div>
+                        <input type="text" name="name" placeholder="Your Name" className="w-full max-w-xs my-3 signing-input" required />
+
                         {/* ------------Email Field------------- */}
-                        <div>
-                            <input type="email" name="email" placeholder="Enter Your Email" className="w-full max-w-xs my-3 signing-input" required />
-                        </div>
+                        <input type="email" name="email" placeholder="Enter Your Email" className="w-full max-w-xs my-3 signing-input" required />
+
                         {/* ------------Password Field------------- */}
-                        <div>
-                            <input type="password" name="password" placeholder="Enter Your Password" className="w-full max-w-xs my-3 signing-input" required />
-                        </div>
+                        <input onFocus={handlePasswordFocus} type={showpassword ? "text" : "password"} name="password" placeholder="Enter Your Password" className="w-full max-w-xs my-3 signing-input" required />
+
                         {/* ------------Confirm Password Field------------- */}
-                        <div>
-                            <input type="password" name="confirm" placeholder="Enter Your Confirm Password" className="w-full max-w-xs my-2 signing-input" required />
-                        </div>
-                        <p className='text-red-500 font-bold'><small>{passwordMatched}</small></p>
+                        <input onFocus={handlePasswordFocus} type={showpassword ? "text" : "password"} name="confirm" placeholder="Enter Your Confirm Password" className="w-full max-w-xs mt-2 signing-input" required />
+
+                        <p className='text-red-500 font-bold'><small>{passwordError}</small></p>
                         {signInError}
 
-                        {/* ------------Submit Button------------- */}
-                        <div>
-                            <input className='btn w-full max-w-xs mt-4 submit-button' type="submit" value="Sign up" />
+                        <div className='flex items-center'>
+                            <input type="checkbox" className='w-4 h-4 mx-2' onClick={handleShowPassword} />
+                            <label className='text-gray-200'>Show Password</label>
                         </div>
+
+
+                        {/* ------------Submit Button------------- */}
+                        <input className='btn w-full max-w-xs mt-4 submit-button' type="submit" value="Sign up" />
+
 
                     </form>
                 </div>
@@ -97,7 +112,10 @@ const SignUp = () => {
                 </div>
 
                 <div className='flex justify-center'>
-                    <button onClick={() => signInWithGoogle()} className="btn w-full max-w-xs mt-2 submit-button text-center">SIGN UP WITH GOOGLE</button>
+                    <button onClick={() => signInWithGoogle()} className="flex justify-center items-center w-full max-w-xs mt-2 py-2 rounded submit-button">
+                        <img className='w-6 h-6 mr-2' src="https://i.ibb.co/vcHZKPm/google-logo.png" alt="google_logo" />
+                        <p className='m-0'>CONTINUE WITH GOOGLE</p>
+                    </button>
                 </div>
 
 

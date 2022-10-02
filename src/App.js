@@ -30,6 +30,8 @@ import AddNewBarber from './Components/Dashboard/AddNewBarber';
 import LookReviews from './Components/About/LookReviews';
 import RequireBarber from './Components/Sign/RequireBarber';
 import AddService from './Components/Dashboard/AddService';
+import ResetPassword from './Components/Sign/ResetPassword';
+import NotFound from './Components/Shared/NotFound';
 
 function App() {
   return (
@@ -72,7 +74,9 @@ function App() {
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/lookreviews/:id' element={<LookReviews></LookReviews>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/resetpassword' element={<ResetPassword></ResetPassword>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
 
       </Routes>
       <ToastContainer />
