@@ -32,10 +32,11 @@ import RequireBarber from './Components/Sign/RequireBarber';
 import AddService from './Components/Dashboard/AddService';
 import ResetPassword from './Components/Sign/ResetPassword';
 import NotFound from './Components/Shared/NotFound';
+import Payment from './Components/Dashboard/Payment';
 
 function App() {
   return (
-    <div>
+    <div className='max-w-screen-2xl mx-auto'>
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
@@ -58,6 +59,7 @@ function App() {
           <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path='/dashboard/myhistory' element={<MyHistory></MyHistory>}></Route>
           <Route path='/dashboard/giveyourreview' element={<GiveYourReview></GiveYourReview>}></Route>
+          <Route path='/dashboard/payment/:id' element={<Payment></Payment>}></Route>
           <Route path='/dashboard/mycustomersbookings' element={<RequireBarber><MyCustomersBooking></MyCustomersBooking></RequireBarber>}></Route>
           <Route path='/dashboard/mycustomersreviews' element={<RequireBarber><MyCustomersReview></MyCustomersReview></RequireBarber>}></Route>
           <Route path='/dashboard/allreviews' element={<RequireManager><AllReviews></AllReviews></RequireManager>}></Route>

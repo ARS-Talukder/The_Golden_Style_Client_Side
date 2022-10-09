@@ -2,7 +2,7 @@ import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
@@ -21,7 +21,7 @@ const MyHistory = () => {
             signOut(auth);
             localStorage.removeItem('accessToken');
             navigate('/');
-            toast("UnAuthorized Access. Please Login again");
+            toast.error("UnAuthorized Access. Please Login again");
         }
         return res.json()
     }));
@@ -59,7 +59,7 @@ const MyHistory = () => {
                                     <td className='py-3 border-2 border-red-500 text-center'>
                                         {
                                             myAppointment.payment === "due" ?
-                                                <button className='btn btn-sm btn-success px-3'>pay</button>
+                                                <Link to={`/dashboard/payment/${myAppointment._id}`} className='btn btn-sm btn-success px-3'>pay</Link>
                                                 : <p className='text-red-500 font-bold'>Paid</p>
                                         }
 

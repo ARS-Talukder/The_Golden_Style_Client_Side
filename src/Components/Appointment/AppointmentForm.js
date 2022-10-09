@@ -44,49 +44,40 @@ const AppointmentForm = () => {
         const appointment_service = event.target.appointment_service.value;
         const appointment_date = event.target.appointment_date.value;
         const appointment_slot = event.target.appointment_slot.value;
-        const payment_service = event.target.payment_service.value;
 
-
-        if (appointment_service === 'Default' || appointment_slot === 'Default' || payment_service === 'Default') {
+        if (appointment_service === 'Default' || appointment_slot === 'Default') {
             toast.error('Please Fill The Form Properly');
             return;
         }
         else {
-
-            if (payment_service === 'PAY NOW') {
-                console.log('Pay Now clicked');
-
-            }
-            else if (payment_service === 'PAY LATER') {
-                const appointment = {
-                    clientName,
-                    appointmentId: id,
-                    phone,
-                    email: user.email,
-                    appointment_barber,
-                    appointment_service,
-                    appointment_date,
-                    appointment_slot,
-                    payment: 'due'
-                };
-                fetch('http://localhost:5000/appointments', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(appointment)
+            const appointment = {
+                clientName,
+                appointmentId: id,
+                phone,
+                email: user.email,
+                appointment_barber,
+                appointment_service,
+                appointment_date,
+                appointment_slot,
+                payment: 'due'
+            };
+            fetch('http://localhost:5000/appointments', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(appointment)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success === true) {
+                        toast(`Appointment Successful, On ${appointment_date} at ${appointment_slot} to ${appointment_barber}`);
+                        navigate('/')
+                    }
+                    else {
+                        toast.error(`Already have an Appointment on ${data.appointment?.appointment_date} at ${data.appointment?.appointment_slot} to ${data.appointment?.appointment_barber}`)
+                    }
                 })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.success === true) {
-                            toast(`Appointment Successful, On ${appointment_date} at ${appointment_slot} to ${appointment_barber}`);
-                            navigate('/')
-                        }
-                        else {
-                            toast.error(`Already have an Appointment on ${data.appointment?.appointment_date} at ${data.appointment?.appointment_slot} to ${data.appointment?.appointment_barber}`)
-                        }
-                    })
-            }
         }
 
 
@@ -125,14 +116,6 @@ const AppointmentForm = () => {
                         {
                             appointedBarber?.slots?.map((slot, index) => <option key={index} value={slot}>{slot}</option>)
                         }
-
-
-                    </select>
-
-                    <select defaultValue={'Default'} name='payment_service' className="select select-success w-full">
-                        <option value="Default" disabled>PAYMENT</option>
-                        <option value="PAY NOW">PAY NOW</option>
-                        <option value="PAY LATER">PAY LATER</option>
 
 
                     </select>
