@@ -13,7 +13,11 @@ import { toast } from 'react-toastify';
 const AppointmentForm = () => {
     const [user, loading, error] = useAuthState(auth);
     const [barber, setBarber] = useState({});
-    const { data: services, isLoading: serviceLoading } = useQuery('allServices', () => fetch('http://localhost:5000/services').then(res => res.json()));
+
+    const [selectedService, setSelectedService] = useState('')
+    const { data: service, isLoading: serviceLoading } = useQuery(['service', selectedService], () => fetch(`http://localhost:5000/service?name=${selectedService}`).then(res => res.json()));
+
+    const { data: services, isLoading: servicesLoading } = useQuery('allServices', () => fetch('http://localhost:5000/services').then(res => res.json()));
     const { data: availableAppointments, isLoading: availableLoading } = useQuery('available', () => fetch(`http://localhost:5000/available?date=${formatDate}`).then(res => res.json()));
 
     useEffect(() => {
@@ -26,15 +30,23 @@ const AppointmentForm = () => {
 
     const navigate = useNavigate();
 
-    if (loading || serviceLoading || availableLoading) {
+    if (loading || servicesLoading || serviceLoading || availableLoading) {
         <Loading></Loading>
     }
-
 
     const location = useLocation();
     const { id } = useParams();
     const date = location.state.date;
     const formatDate = format(date, 'PP')
+
+    const handleServiceSelection = (event) => {
+        if (event.target.value === 'Default') {
+            return
+        }
+        else {
+            setSelectedService(event.target.value);
+        }
+    }
 
     const handleBookNow = event => {
         event.preventDefault();
@@ -42,6 +54,8 @@ const AppointmentForm = () => {
         const phone = event.target.phone.value;
         const appointment_barber = barber.barber_name;
         const appointment_service = event.target.appointment_service.value;
+        const price = event.target.price.value;
+        const service_price = price.split(" ")[0];
         const appointment_date = event.target.appointment_date.value;
         const appointment_slot = event.target.appointment_slot.value;
 
@@ -57,6 +71,7 @@ const AppointmentForm = () => {
                 email: user.email,
                 appointment_barber,
                 appointment_service,
+                service_price,
                 appointment_date,
                 appointment_slot,
                 payment: 'due'
@@ -100,14 +115,16 @@ const AppointmentForm = () => {
 
                     <input type="text" value={`Appointment to ${barber.barber_name}`} className="input input-bordered input-success w-full" disabled />
 
-                    <select defaultValue={'Default'} name='appointment_service' className="select select-success w-full" required>
+                    <select defaultValue={'Default'} onClick={handleServiceSelection} name='appointment_service' className="select select-success w-full" required>
                         <option value="Default" disabled>Select Service</option>
                         {
-                            services?.map(service => <option key={service._id} value={service.service_name}>{service.service_name}</option>)
+                            services?.map(service => <option key={service._id} value={service.service_name} >{service.service_name}</option>)
                         }
 
 
                     </select>
+
+                    <input type="text" name='price' value={service ? `${service.service_amount} $` : 'Service Price'} className="input input-bordered input-success w-full" disabled />
 
                     <input type="text" name='appointment_date' value={formatDate} className="input input-bordered input-success w-full" disabled />
 

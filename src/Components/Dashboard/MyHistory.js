@@ -11,7 +11,7 @@ import DashboardButton from './DashboardButton';
 const MyHistory = () => {
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate()
-    const { data: myAppointments, isLoading: appointmentLoading } = useQuery('myAppointments', () => fetch(`http://localhost:5000/myAppointments?email=${user.email}`, {
+    const { data: myAppointments, isLoading: appointmentLoading, refetch } = useQuery('myAppointments', () => fetch(`http://localhost:5000/myAppointments?email=${user.email}`, {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -25,6 +25,20 @@ const MyHistory = () => {
         }
         return res.json()
     }));
+
+    const handleCancelAppointment = (id) => {
+        const proceed = window.confirm('Do You Want to Cancel Your Appointment?');
+        if (proceed) {
+            fetch(`http://localhost:5000/appointment-delete?id=${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    toast.success("Your Appointment is Canceled");
+                    refetch();
+                })
+        }
+    }
 
     if (loading || appointmentLoading) {
         return <Loading></Loading>
@@ -59,8 +73,15 @@ const MyHistory = () => {
                                     <td className='py-3 border-2 border-red-500 text-center'>
                                         {
                                             myAppointment.payment === "due" ?
-                                                <Link to={`/dashboard/payment/${myAppointment._id}`} className='btn btn-sm btn-success px-3'>pay</Link>
-                                                : <p className='text-red-500 font-bold'>Paid</p>
+                                                <div>
+                                                    <Link to={`/dashboard/payment/${myAppointment._id}`} className='btn btn-sm btn-success px-3 mr-1'>pay</Link>
+                                                    <button onClick={() => handleCancelAppointment(myAppointment._id)} className='btn btn-sm btn-danger px-2'>Cancel</button>
+                                                </div>
+                                                : <div>
+                                                    <p className='text-red-500 font-bold my-0'>Paid</p>
+                                                    <p className='underline font-bold my-0'>Transaction Id:</p>
+                                                    <p className='text-green-500 font-bold my-0'>{myAppointment.transactionId}</p>
+                                                </div>
                                         }
 
                                     </td>

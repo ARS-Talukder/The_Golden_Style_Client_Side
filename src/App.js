@@ -32,7 +32,7 @@ import RequireBarber from './Components/Sign/RequireBarber';
 import AddService from './Components/Dashboard/AddService';
 import ResetPassword from './Components/Sign/ResetPassword';
 import NotFound from './Components/Shared/NotFound';
-import Payment from './Components/Dashboard/Payment';
+import Payment from './Components/Dashboard/Payment/Payment';
 
 function App() {
   return (
