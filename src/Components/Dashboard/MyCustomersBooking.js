@@ -17,7 +17,7 @@ const MyCustomersBooking = () => {
     const [date, setDate] = useState(new Date());
     const formatDate = format(date, 'PP');
     const navigate = useNavigate();
-    const { data: appointments, isLoading: appointmentsLoading } = useQuery(['appointments', formatDate], () => fetch(`http://localhost:5000/myCustomerAppointments?date=${formatDate}&email=${user.email}`, {
+    const { data: appointments, isLoading: appointmentsLoading } = useQuery(['appointments', formatDate], () => fetch(`https://the-golden-style-server.onrender.com/myCustomerAppointments?date=${formatDate}&email=${user.email}`, {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

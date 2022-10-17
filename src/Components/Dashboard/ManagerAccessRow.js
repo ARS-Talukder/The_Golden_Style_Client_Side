@@ -11,7 +11,7 @@ const ManagerAccessRow = ({ user, index, refetch }) => {
             return
         }
         else if (proceed === 'manager') {
-            fetch(`http://localhost:5000/users/chairman/${email}`, {
+            fetch(`https://the-golden-style-server.onrender.com/users/chairman/${email}`, {
                 method: 'PUT',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -44,7 +44,7 @@ const ManagerAccessRow = ({ user, index, refetch }) => {
             return
         }
         else if (proceed === 'remove') {
-            fetch(`http://localhost:5000/users/remove/${email}`, {
+            fetch(`https://the-golden-style-server.onrender.com/users/remove/${email}`, {
                 method: 'PUT',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`

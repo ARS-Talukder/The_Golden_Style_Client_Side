@@ -29,7 +29,7 @@ const AddNewBarber = () => {
             return
         }
         else if (proceed === 'barber') {
-            fetch('http://localhost:5000/barbers', {
+            fetch('https://the-golden-style-server.onrender.com/barbers', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

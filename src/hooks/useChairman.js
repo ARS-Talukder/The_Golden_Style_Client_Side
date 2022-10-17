@@ -6,7 +6,7 @@ const useAdmin = user => {
     useEffect(() => {
         const email = user?.email;
         if (email) {
-            fetch(`http://localhost:5000/chairman/${email}`, {
+            fetch(`https://the-golden-style-server.onrender.com/chairman/${email}`, {
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json',

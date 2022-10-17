@@ -7,7 +7,7 @@ import ContactSection from '../Shared/ContactSection';
 import Footer from '../Shared/Footer';
 
 const Services = () => {
-    const { data: services, isLoading:serviceLoading } = useQuery('allServices', () => fetch('http://localhost:5000/services').then(res => res.json()));
+    const { data: services, isLoading:serviceLoading } = useQuery('allServices', () => fetch('https://the-golden-style-server.onrender.com/services').then(res => res.json()));
 
     if (serviceLoading) {
         return <Loading></Loading>

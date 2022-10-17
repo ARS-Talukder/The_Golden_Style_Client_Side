@@ -12,7 +12,7 @@ import Footer from '../Shared/Footer';
 import '../Dashboard/Dashboard.css';
 
 const Appointment = () => {
-    const { data: barbers, isLoading: barberLoading } = useQuery('allBarbers', () => fetch('http://localhost:5000/barbers').then(res => res.json()));
+    const { data: barbers, isLoading: barberLoading } = useQuery('allBarbers', () => fetch('https://the-golden-style-server.onrender.com/barbers').then(res => res.json()));
 
     const [date, setDate] = useState(new Date());
 

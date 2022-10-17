@@ -26,7 +26,7 @@ const AddNewManager = () => {
                 return
             }
             else if (proceed === 'manager') {
-                fetch('http://localhost:5000/managers', {
+                fetch('https://the-golden-style-server.onrender.com/managers', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

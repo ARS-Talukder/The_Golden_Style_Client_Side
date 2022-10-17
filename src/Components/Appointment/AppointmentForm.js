@@ -9,19 +9,20 @@ import { useQuery } from 'react-query';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
+import './Form.css'
 
 const AppointmentForm = () => {
     const [user, loading, error] = useAuthState(auth);
     const [barber, setBarber] = useState({});
 
     const [selectedService, setSelectedService] = useState('')
-    const { data: service, isLoading: serviceLoading } = useQuery(['service', selectedService], () => fetch(`http://localhost:5000/service?name=${selectedService}`).then(res => res.json()));
+    const { data: service, isLoading: serviceLoading } = useQuery(['service', selectedService], () => fetch(`https://the-golden-style-server.onrender.com/service?name=${selectedService}`).then(res => res.json()));
 
-    const { data: services, isLoading: servicesLoading } = useQuery('allServices', () => fetch('http://localhost:5000/services').then(res => res.json()));
-    const { data: availableAppointments, isLoading: availableLoading } = useQuery('available', () => fetch(`http://localhost:5000/available?date=${formatDate}`).then(res => res.json()));
+    const { data: services, isLoading: servicesLoading } = useQuery('allServices', () => fetch('https://the-golden-style-server.onrender.com/services').then(res => res.json()));
+    const { data: availableAppointments, isLoading: availableLoading } = useQuery('available', () => fetch(`https://the-golden-style-server.onrender.com/available?date=${formatDate}`).then(res => res.json()));
 
     useEffect(() => {
-        fetch(`http://localhost:5000/barber/${id}`)
+        fetch(`https://the-golden-style-server.onrender.com/barber/${id}`)
             .then(res => res.json())
             .then(data => setBarber(data))
     }, [])
@@ -76,7 +77,7 @@ const AppointmentForm = () => {
                 appointment_slot,
                 payment: 'due'
             };
-            fetch('http://localhost:5000/appointments', {
+            fetch('https://the-golden-style-server.onrender.com/appointments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -107,15 +108,15 @@ const AppointmentForm = () => {
 
                 <form onSubmit={handleBookNow} action="" className='grid grid-cols-1 gap-4 justify-items-center my-8 px-4'>
 
-                    <input type="text" value={user.displayName} className="input input-bordered input-success w-full " disabled />
+                    <input type="text" value={user.displayName} className="input input-bordered input-success w-full form-input" disabled />
 
-                    <input type="number" name='phone' placeholder="Your Phone Number" className="input input-bordered input-success w-full" required />
+                    <input type="number" name='phone' placeholder="Your Phone Number" className="input input-bordered input-success w-full form-input" required />
 
-                    <input type="text" value={user.email} className="input input-bordered input-success w-full" disabled />
+                    <input type="text" value={user.email} className="input input-bordered input-success w-full form-input" disabled />
 
-                    <input type="text" value={`Appointment to ${barber.barber_name}`} className="input input-bordered input-success w-full" disabled />
+                    <input type="text" value={`Appointment to ${barber.barber_name}`} className="input input-bordered input-success w-full form-input" disabled />
 
-                    <select defaultValue={'Default'} onClick={handleServiceSelection} name='appointment_service' className="select select-success w-full" required>
+                    <select defaultValue={'Default'} onChange={handleServiceSelection} name='appointment_service' className="select select-success w-full form-input" required>
                         <option value="Default" disabled>Select Service</option>
                         {
                             services?.map(service => <option key={service._id} value={service.service_name} >{service.service_name}</option>)
@@ -124,11 +125,11 @@ const AppointmentForm = () => {
 
                     </select>
 
-                    <input type="text" name='price' value={service ? `${service.service_amount} $` : 'Service Price'} className="input input-bordered input-success w-full" disabled />
+                    <input type="text" name='price' value={service ? `${service.service_amount} $` : 'Service Price'} className="input input-bordered input-success w-full form-input" disabled />
 
-                    <input type="text" name='appointment_date' value={formatDate} className="input input-bordered input-success w-full" disabled />
+                    <input type="text" name='appointment_date' value={formatDate} className="input input-bordered input-success w-full form-input" disabled />
 
-                    <select defaultValue={'Default'} name='appointment_slot' className="select select-success w-full">
+                    <select defaultValue={'Default'} name='appointment_slot' className="select select-success w-full form-input">
                         <option value="Default" disabled>Choose Your Slot</option>
                         {
                             appointedBarber?.slots?.map((slot, index) => <option key={index} value={slot}>{slot}</option>)

@@ -11,7 +11,7 @@ const AddService = () => {
         const service_amount = event.target.amount.value;
         const service_img = event.target.img.value;
         const service = { service_name, service_img, service_amount };
-        fetch('http://localhost:5000/services', {
+        fetch('https://the-golden-style-server.onrender.com/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -20,7 +20,6 @@ const AddService = () => {
         })
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
                 toast.success(`${service_name} added successfully`);
                 navigate('/services')
 

@@ -11,7 +11,7 @@ import DashboardButton from './DashboardButton';
 const MyCustomersReview = () => {
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
-    const { data: reviews, isLoading: reviewsLoading } = useQuery('reviews', () => fetch(`http://localhost:5000/myCustomerReviews?email=${user.email}`, {
+    const { data: reviews, isLoading: reviewsLoading } = useQuery('reviews', () => fetch(`https://the-golden-style-server.onrender.com/myCustomerReviews?email=${user.email}`, {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

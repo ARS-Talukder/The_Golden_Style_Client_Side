@@ -4,13 +4,13 @@ import Slide from 'react-reveal/Slide';
 
 const Stylist = () => {
     return (
-        <div>
-            <section className='mt-4'>
-                <h4 className='fw-bold text-center'>Top Notch Stylist</h4>
+        <div className='bg-black'>
+            <section className='pt-4'>
+                <h4 className='fw-bold text-center text-gray-300'>Top Notch Stylist</h4>
                 <div className="divider bg-red-400 w-16 h-1 mx-auto mt-0 rounded-lg"></div>
             </section>
 
-            <section className='bg-black flex'>
+            <section className='flex'>
                 <Slide left>
                     <div className='w-1/2 hidden lg:flex md:flex'>
                         <img src="https://i.ibb.co/w7jVfYj/model-1.jpg" alt="Stylist" />

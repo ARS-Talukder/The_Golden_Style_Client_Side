@@ -1,0 +1,8 @@
+.form-input {
+    color: rgb(122, 113, 113);
+}
+
+.form-input::placeholder {
+    color: rgb(168, 150, 150);
+    font-weight: bold;
+}

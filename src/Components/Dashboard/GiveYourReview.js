@@ -10,7 +10,7 @@ import DashboardButton from './DashboardButton';
 
 const GiveYourReview = () => {
     const [user, loading, error] = useAuthState(auth);
-    const { data: barbers, isLoading: barberLoading } = useQuery('allBarbers', () => fetch('http://localhost:5000/barbers').then(res => res.json()));
+    const { data: barbers, isLoading: barberLoading } = useQuery('allBarbers', () => fetch('https://the-golden-style-server.onrender.com/barbers').then(res => res.json()));
 
     const navigate = useNavigate();
 
@@ -43,7 +43,7 @@ const GiveYourReview = () => {
                 barber_service,
                 client_review
             };
-            fetch('http://localhost:5000/reviews', {
+            fetch('https://the-golden-style-server.onrender.com/reviews', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

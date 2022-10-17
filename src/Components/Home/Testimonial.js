@@ -8,7 +8,7 @@ import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
 
 const Testimonial = () => {
-    const { data: reviews, isLoading: reviewLoading } = useQuery('allReviews', () => fetch('http://localhost:5000/reviews').then(res => res.json()));
+    const { data: reviews, isLoading: reviewLoading } = useQuery('allReviews', () => fetch('https://the-golden-style-server.onrender.com/reviews').then(res => res.json()));
 
     const navigate = useNavigate();
 
