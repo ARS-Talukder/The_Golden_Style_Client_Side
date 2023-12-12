@@ -10,7 +10,7 @@ import ManagerAccessRow from './ManagerAccessRow';
 
 const ManagerAccess = () => {
     const navigate = useNavigate();
-    const { data: users, isLoading: usersLoading, refetch } = useQuery('users', () => fetch('https://the-golden-style-server.onrender.com/users', {
+    const { data: users, isLoading: usersLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/users', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

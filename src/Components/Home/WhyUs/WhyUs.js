@@ -1,11 +1,11 @@
 import React from 'react';
 import './WhyUs.css';
 import { useQuery } from 'react-query';
-import Loading from '../Shared/Loading';
-import Feature from './Feature';
+import Loading from '../../Shared/Loading';
+import Feature from '../Feature/Feature';
 
 const WhyUs = () => {
-    const { data: features, isLoading: featureLoading } = useQuery('allFeatures', () => fetch('https://the-golden-style-server.onrender.com/features').then(res => res.json()))
+    const { data: features, isLoading: featureLoading } = useQuery('allFeatures', () => fetch('http://localhost:5000/features').then(res => res.json()))
     if (featureLoading) {
         return <Loading></Loading>
     }

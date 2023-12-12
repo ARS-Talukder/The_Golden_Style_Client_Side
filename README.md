@@ -1,5 +1,5 @@
 # The Golden Style
-Click to go live site [https://the-golden-style.web.app/](https://the-golden-style.web.app/).
+Click to go live site [https://the-golden-style.web.app/](https://the-golden-style.web.app/)
 
 ## This is a website for gents grooming
 

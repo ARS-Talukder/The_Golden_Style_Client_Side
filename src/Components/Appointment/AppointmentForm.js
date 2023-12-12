@@ -3,7 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
-import '../Home/WhyUs.css';
+import '../Home/WhyUs/WhyUs.css';
 import { format } from 'date-fns';
 import { useQuery } from 'react-query';
 import { useState } from 'react';
@@ -16,13 +16,13 @@ const AppointmentForm = () => {
     const [barber, setBarber] = useState({});
 
     const [selectedService, setSelectedService] = useState('')
-    const { data: service, isLoading: serviceLoading } = useQuery(['service', selectedService], () => fetch(`https://the-golden-style-server.onrender.com/service?name=${selectedService}`).then(res => res.json()));
+    const { data: service, isLoading: serviceLoading } = useQuery(['service', selectedService], () => fetch(`http://localhost:5000/service?name=${selectedService}`).then(res => res.json()));
 
-    const { data: services, isLoading: servicesLoading } = useQuery('allServices', () => fetch('https://the-golden-style-server.onrender.com/services').then(res => res.json()));
-    const { data: availableAppointments, isLoading: availableLoading } = useQuery('available', () => fetch(`https://the-golden-style-server.onrender.com/available?date=${formatDate}`).then(res => res.json()));
+    const { data: services, isLoading: servicesLoading } = useQuery('allServices', () => fetch('http://localhost:5000/services').then(res => res.json()));
+    const { data: availableAppointments, isLoading: availableLoading } = useQuery('available', () => fetch(`http://localhost:5000/available?date=${formatDate}`).then(res => res.json()));
 
     useEffect(() => {
-        fetch(`https://the-golden-style-server.onrender.com/barber/${id}`)
+        fetch(`http://localhost:5000/barber/${id}`)
             .then(res => res.json())
             .then(data => setBarber(data))
     }, [])
@@ -77,7 +77,7 @@ const AppointmentForm = () => {
                 appointment_slot,
                 payment: 'due'
             };
-            fetch('https://the-golden-style-server.onrender.com/appointments', {
+            fetch('http://localhost:5000/appointments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

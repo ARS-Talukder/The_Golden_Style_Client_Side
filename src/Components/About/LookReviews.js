@@ -7,7 +7,7 @@ import LookReview from './LookReview';
 const LookReviews = () => {
     const location = useLocation();
     const barber_name = location.state.barber_name;
-    const { data: reviews, isLoading: reviewsLoading } = useQuery('reviews', () => fetch(`https://the-golden-style-server.onrender.com/reviewsByBarber?name=${barber_name}`).then(res => res.json()));
+    const { data: reviews, isLoading: reviewsLoading } = useQuery('reviews', () => fetch(`http://localhost:5000/reviewsByBarber?name=${barber_name}`).then(res => res.json()));
 
     if (reviewsLoading) {
         return <Loading></Loading>

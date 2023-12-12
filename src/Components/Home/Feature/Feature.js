@@ -1,5 +1,5 @@
 import React from 'react';
-import './WhyUs.css';
+import '../WhyUs/WhyUs.css';
 import Pulse from 'react-reveal/Pulse';
 
 const Feature = ({ feature }) => {

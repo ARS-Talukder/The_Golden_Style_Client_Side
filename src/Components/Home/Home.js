@@ -1,11 +1,11 @@
 import React from 'react';
 import ContactSection from '../Shared/ContactSection';
 import Footer from '../Shared/Footer';
-import Banner from './Banner';
-import Stylist from './Stylist';
-import Summary from './Summary';
-import Testimonial from './Testimonial';
-import WhyUs from './WhyUs';
+import Banner from './Banner/Banner';
+import WhyUs from './WhyUs/WhyUs';
+import Stylist from './Stylist/Stylist';
+import Testimonial from './Testimonial/Testimonial';
+import Summary from './Summary/Summary';
 
 const Home = () => {
     return (

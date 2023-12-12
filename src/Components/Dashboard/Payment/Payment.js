@@ -14,7 +14,7 @@ const stripePromise = loadStripe('pk_test_51L60shGAQ9TdksKxnx4viZcUdkkXV0qO4FPfP
 const Payment = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const { data: appointment, isLoading: appointmentLoading } = useQuery(['appointment', id], () => fetch(`https://the-golden-style-server.onrender.com/appointment/${id}`, {
+    const { data: appointment, isLoading: appointmentLoading } = useQuery(['appointment', id], () => fetch(`http://localhost:5000/appointment/${id}`, {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

@@ -3,14 +3,14 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
-import '../Home/WhyUs.css';
+import '../Home/WhyUs/WhyUs.css';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import DashboardButton from './DashboardButton';
 
 const GiveYourReview = () => {
     const [user, loading, error] = useAuthState(auth);
-    const { data: barbers, isLoading: barberLoading } = useQuery('allBarbers', () => fetch('https://the-golden-style-server.onrender.com/barbers').then(res => res.json()));
+    const { data: barbers, isLoading: barberLoading } = useQuery('allBarbers', () => fetch('http://localhost:5000/barbers').then(res => res.json()));
 
     const navigate = useNavigate();
 
@@ -43,7 +43,7 @@ const GiveYourReview = () => {
                 barber_service,
                 client_review
             };
-            fetch('https://the-golden-style-server.onrender.com/reviews', {
+            fetch('http://localhost:5000/reviews', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

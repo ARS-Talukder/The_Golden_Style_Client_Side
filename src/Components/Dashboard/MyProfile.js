@@ -20,7 +20,7 @@ const MyProfile = () => {
     const [chairman, chairmanLoading] = useChairman(user);
     const [barber, barberLoading] = useBarber(user);
     const email = user.email;
-    const { data: userByEmail, isLoading: userByEmailLoading, refetch } = useQuery('userByEmail', () => fetch(`https://the-golden-style-server.onrender.com/user?email=${email}`, {
+    const { data: userByEmail, isLoading: userByEmailLoading, refetch } = useQuery('userByEmail', () => fetch(`http://localhost:5000/user?email=${email}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -59,7 +59,7 @@ const MyProfile = () => {
 
 
                     // Sending img to the server
-                    fetch(`https://the-golden-style-server.onrender.com/user/${email}`, {
+                    fetch(`http://localhost:5000/user/${email}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json',

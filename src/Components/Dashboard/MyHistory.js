@@ -11,7 +11,7 @@ import DashboardButton from './DashboardButton';
 const MyHistory = () => {
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate()
-    const { data: myAppointments, isLoading: appointmentLoading, refetch } = useQuery('myAppointments', () => fetch(`https://the-golden-style-server.onrender.com/myAppointments?email=${user.email}`, {
+    const { data: myAppointments, isLoading: appointmentLoading, refetch } = useQuery('myAppointments', () => fetch(`http://localhost:5000/myAppointments?email=${user.email}`, {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -29,7 +29,7 @@ const MyHistory = () => {
     const handleCancelAppointment = (id) => {
         const proceed = window.confirm('Do You Want to Cancel Your Appointment?');
         if (proceed) {
-            fetch(`https://the-golden-style-server.onrender.com/appointment-delete?id=${id}`, {
+            fetch(`http://localhost:5000/appointment-delete?id=${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

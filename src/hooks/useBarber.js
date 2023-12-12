@@ -6,7 +6,7 @@ const useBarber = user => {
     useEffect(() => {
         const email = user?.email;
         if (email) {
-            fetch(`https://the-golden-style-server.onrender.com/checkbarber/${email}`, {
+            fetch(`http://localhost:5000/checkbarber/${email}`, {
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json',

@@ -4,7 +4,7 @@ import Loading from '../Shared/Loading';
 import DashboardButton from './DashboardButton';
 
 const AllReviews = () => {
-    const { data: reviews, isLoading: reviewsLoading } = useQuery('reviews', () => fetch('https://the-golden-style-server.onrender.com/reviews').then(res => res.json()));
+    const { data: reviews, isLoading: reviewsLoading } = useQuery('reviews', () => fetch('http://localhost:5000/reviews').then(res => res.json()));
 
     if (reviewsLoading) {
         return <Loading></Loading>

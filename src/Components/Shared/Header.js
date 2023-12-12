@@ -9,7 +9,8 @@ import Loading from './Loading';
 const Header = () => {
 
     const [user, loading, error] = useAuthState(auth);
-    const navigate = useNavigate();
+    const navigate = useNavigate
+    ();
 
     if (loading) {
         <Loading></Loading>

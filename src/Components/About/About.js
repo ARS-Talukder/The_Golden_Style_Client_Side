@@ -10,9 +10,9 @@ import Barber from './Barber';
 import Manager from './Manager';
 
 const About = () => {
-    const { data: barbers, isLoading: barberLoading } = useQuery('allBarbers', () => fetch('https://the-golden-style-server.onrender.com/barbers').then(res => res.json()));
+    const { data: barbers, isLoading: barberLoading } = useQuery('allBarbers', () => fetch('http://localhost:5000/barbers').then(res => res.json()));
 
-    const { data: managers, isLoading: managersLoading } = useQuery('allManagers', () => fetch('https://the-golden-style-server.onrender.com/managers').then(res => res.json()));
+    const { data: managers, isLoading: managersLoading } = useQuery('allManagers', () => fetch('http://localhost:5000/managers').then(res => res.json()));
 
     if (barberLoading || managersLoading) {
         return <Loading></Loading>
