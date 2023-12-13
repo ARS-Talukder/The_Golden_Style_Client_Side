@@ -1,13 +1,21 @@
 import React from 'react';
 import './WhyUs.css';
-import { useQuery } from 'react-query';
 import Loading from '../../Shared/Loading';
 import Feature from '../Feature/Feature';
+import { useGetFeaturesQuery } from '../../../features/home/homeApi';
 
 const WhyUs = () => {
-    const { data: features, isLoading: featureLoading } = useQuery('allFeatures', () => fetch('http://localhost:5000/features').then(res => res.json()))
-    if (featureLoading) {
+    const { data, isLoading, isSuccess, isError, error } = useGetFeaturesQuery();
+    const features = data;
+    let content;
+    if (isLoading) {
         return <Loading></Loading>
+    }
+    if (isError) {
+        return <p className='text-red-500 font-bold text-center'>{error.status}</p>
+    }
+    if (isSuccess) {
+        content = features.map(feature => <Feature key={feature._id} feature={feature}></Feature>)
     }
     return (
         <div className='why-main-div text-center'>
@@ -21,7 +29,7 @@ const WhyUs = () => {
             {/* -------------------------Main Section---------------------------- */}
             <section className='lg:px-10 px-4 py-20 grid lg:grid-cols-2 gap-20'>
                 {
-                    features.map(feature => <Feature key={feature._id} feature={feature}></Feature>)
+                    content
                 }
 
             </section>

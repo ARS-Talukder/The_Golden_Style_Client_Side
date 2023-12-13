@@ -4,20 +4,46 @@ import './Testimonial.css';
 import Slide from 'react-reveal/Slide';
 import Zoom from 'react-reveal/Zoom';
 import { useNavigate } from 'react-router-dom';
-import { useQuery } from 'react-query';
 import Loading from '../../Shared/Loading';
+import { useGetReviewsQuery } from '../../../features/home/homeApi';
 
 const Testimonial = () => {
-    const { data: reviews, isLoading: reviewLoading } = useQuery('allReviews', () => fetch('http://localhost:5000/reviews').then(res => res.json()));
+    // const { data: reviews, isLoading: reviewLoading } = useQuery('allReviews', () => fetch('http://localhost:5000/reviews').then(res => res.json()));
+    const { data, isLoading, isSuccess, isError, error } = useGetReviewsQuery();
+    const reviews = data;
 
     const navigate = useNavigate();
 
-    if (reviewLoading) {
-        return <Loading></Loading>
-    }
 
     const handleKnowTeam = () => {
         navigate('/about');
+    }
+
+    let content;
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+    if (isError) {
+        return <p className='text-red-500 font-bold text-center'>{error.status}</p>
+    }
+    if (isSuccess) {
+        content = reviews.map(review =>
+            <Carousel.Item key={review._id}>
+                <div className='w-3/4 mx-auto'>
+                    <h4 className='customer-comment-header'>Customer Says</h4>
+                    <div className="divider bg-orange-400 w-32 h-1 mt-0 rounded-lg"></div>
+                    <h5 className='customer-comment'>{review.client_review}</h5>
+
+                    <div className='flex items-center'>
+                        <p className='my-0 mr-4'>I have taken service from <span className='fw-bold'>{review.barber_name}</span></p>
+                        <button className='btn btn-sm btn-success' onClick={handleKnowTeam}>Click to Know our team</button>
+                    </div>
+
+                    <p className='my-0'><small className='fw-bold'>{review.clientName}</small></p>
+                    <p className='my-0'><small className='fw-bold'>{review.email}</small></p>
+                </div>
+
+            </Carousel.Item>)
     }
 
     return (
@@ -46,23 +72,7 @@ const Testimonial = () => {
                             <Carousel variant="dark" indicators={false}>
 
                                 {
-                                    reviews.map(review =>
-                                        <Carousel.Item key={review._id}>
-                                            <div className='w-3/4 mx-auto'>
-                                                <h4 className='customer-comment-header'>Customer Says</h4>
-                                                <div className="divider bg-orange-400 w-32 h-1 mt-0 rounded-lg"></div>
-                                                <h5 className='customer-comment'>{review.client_review}</h5>
-
-                                                <div className='flex items-center'>
-                                                    <p className='my-0 mr-4'>I have taken service from <span className='fw-bold'>{review.barber_name}</span></p>
-                                                    <button className='btn btn-sm btn-success' onClick={handleKnowTeam}>Click to Know our team</button>
-                                                </div>
-
-                                                <p className='my-0'><small className='fw-bold'>{review.clientName}</small></p>
-                                                <p className='my-0'><small className='fw-bold'>{review.email}</small></p>
-                                            </div>
-
-                                        </Carousel.Item>)
+                                    content
                                 }
 
                             </Carousel>
